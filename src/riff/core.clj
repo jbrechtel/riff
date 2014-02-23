@@ -6,4 +6,4 @@
             [ring.util.response :as resp]))
 
 (defroutes app
-  (GET "/" [] (resp/redirect (random-image))))
+  (GET "/" [] (resp/redirect (random-image (fetch-flickr-public-feed)))))
