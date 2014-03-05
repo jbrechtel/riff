@@ -1,0 +1,4 @@
+#!/bin/sh
+
+CONTAINER=$(docker run -d `cat latest_image_tag`)
+echo $CONTAINER > latest_container_id
