@@ -4,11 +4,15 @@
   (:use riff.flickr)
   (:require [compojure.handler :as handler]
             [compojure.route :as route]
+            [org.httpkit.client :as http]
             [ring.adapter.jetty :as jetty]
             [ring.util.response :as resp]))
 
 (defroutes app-routes
-  (GET "/" [] (resp/redirect (random-image (fetch-flickr-public-feed)))))
+  (GET "/" [] (let [body (:body @(http/get (random-image (fetch-flickr-public-feed))))]
+                {:status 200
+                 :headers {}
+                 :body body})))
 
 (def app
   (handler/site app-routes))
