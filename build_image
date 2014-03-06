@@ -6,4 +6,4 @@ IMAGE_NAME=riff-$COMMIT
 lein do clean, uberjar
 mv target/riff-web.jar docker
 docker build -q -rm -t $IMAGE_NAME docker
-echo $IMAGE_NAME > latest_image_tag
+echo $IMAGE_NAME > .last_image_tag
