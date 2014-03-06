@@ -11,4 +11,5 @@
   :plugins [[lein-ring "0.8.10"]]
   :ring {:handler riff.core/app-routes}
   :uberjar-name "riff-web.jar"
+  :profiles {:uberjar {:aot :all}}
   :main riff.core)

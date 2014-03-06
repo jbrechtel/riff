@@ -2,3 +2,4 @@
 target
 .nrepl*
 .lein*
+latest_image_tag
