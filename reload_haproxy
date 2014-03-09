@@ -1,0 +1,3 @@
+#!/bin/sh
+
+haproxy -D -f config/haproxy_$1.conf -st $(cat pids/haproxy.pid)
