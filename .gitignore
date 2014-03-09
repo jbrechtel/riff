@@ -6,3 +6,5 @@ target
 .green*
 .blue*
 pids
+.active
+.inactive

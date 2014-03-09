@@ -4,3 +4,8 @@ APP_PORT=49070
 COLOR=blue
 
 . ./docker_start
+
+./reload_haproxy $COLOR
+
+echo $COLOR > .active
+echo green > .inactive

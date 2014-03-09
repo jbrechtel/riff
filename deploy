@@ -1,0 +1,15 @@
+#!/bin/sh
+
+./build_image
+
+
+if [ -e ".inactive" ]
+then
+    INACTIVE=`cat .inactive`
+else
+    INACTIVE="blue"
+fi
+
+echo $INACTIVE
+
+./start_$INACTIVE
