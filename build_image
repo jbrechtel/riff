@@ -3,7 +3,6 @@
 COMMIT=$(git rev-parse --short HEAD)
 IMAGE_NAME=riff-$COMMIT
 
-lein do clean, uberjar
-mv target/riff-web.jar docker
-docker build -q -rm -t $IMAGE_NAME docker
+lein uberjar
+docker build -q -rm -t $IMAGE_NAME .
 echo $IMAGE_NAME > .last_image_tag
