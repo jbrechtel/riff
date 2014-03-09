@@ -1,0 +1,6 @@
+#!/bin/sh
+
+APP_PORT=49070
+COLOR=blue
+
+. ./docker_start

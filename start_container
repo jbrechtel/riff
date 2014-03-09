@@ -1,6 +1,0 @@
-#!/bin/sh
-
-CONTAINER=$(docker run -p 49070:8000 -p 49071:9001 -d `cat .last_image_tag`)
-echo $CONTAINER > .last_container_id
-
-docker inspect -format='{{.NetworkSettings.IPAddress}}' $CONTAINER > .last_container_ip

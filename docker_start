@@ -1,0 +1,12 @@
+#!/bin/sh
+
+SUFFIX="_container_id"
+OLD_CONTAINER=`cat .$COLOR$SUFFIX`
+docker kill $OLD_CONTAINER
+docker rm $OLD_CONTAINER
+
+NEW_CONTAINER=$(docker run -p $APP_PORT:8000 -d `cat .last_image_tag`)
+echo $NEW_CONTAINER > ".$COLOR$SUFFIX"
+
+IP_SUFFIX="_ip"
+docker inspect -format='{{.NetworkSettings.IPAddress}}' $NEW_CONTAINER > ".$COLOR$IP_SUFFIX"
