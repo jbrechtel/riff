@@ -14,9 +14,6 @@ ADD config/supervisord.conf /etc/supervisord.conf
 
 RUN chown -R riff /home/riff
 
-EXPOSE 49070:8000
-EXPOSE 49071:9001
-
 ENV foo bar
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
