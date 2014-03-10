@@ -1,7 +1,6 @@
 FROM ubuntu
 MAINTAINER James Brechtel "jbrechtel@gmail.com"
 
-RUN rm /etc/apt/sources.list
 RUN echo deb http://archive.ubuntu.com/ubuntu precise main universe multiverse > /etc/apt/sources.list
 
 RUN apt-get update
