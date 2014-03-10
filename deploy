@@ -2,7 +2,6 @@
 
 ./build_image
 
-
 if [ -e ".inactive" ]
 then
     INACTIVE=`cat .inactive`

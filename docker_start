@@ -1,12 +1,23 @@
 #!/bin/sh
 
+RIFF_COLOR=$1
+APP_PORT=$2
 SUFFIX="_container_id"
-OLD_CONTAINER=`cat .$COLOR$SUFFIX`
-docker kill $OLD_CONTAINER
-docker rm $OLD_CONTAINER
+OLD_CONTAINER=`cat .$RIFF_COLOR$SUFFIX`
 
-NEW_CONTAINER=$(docker run -p $APP_PORT:8000 -d `cat .last_image_tag`)
-echo $NEW_CONTAINER > ".$COLOR$SUFFIX"
+docker kill $OLD_CONTAINER
+
+NEW_CONTAINER=$(docker run -e "RIFF_COLOR=$RIFF_COLOR" -p $APP_PORT:8000 -d `cat .last_image_tag`)
+echo $NEW_CONTAINER > ".$RIFF_COLOR$SUFFIX"
 
 IP_SUFFIX="_ip"
-docker inspect -format='{{.NetworkSettings.IPAddress}}' $NEW_CONTAINER > ".$COLOR$IP_SUFFIX"
+CONTAINER_IP=`docker inspect -format='{{.NetworkSettings.IPAddress}}' $NEW_CONTAINER`
+
+echo $CONTAINER_IP > ".$RIFF_COLOR$IP_SUFFIX"
+
+#wait on application to finish starting
+while true
+do
+    curl --connect-timeout 1 http://localhost:$APP_PORT/color && break
+    sleep .2
+done

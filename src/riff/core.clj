@@ -12,7 +12,11 @@
   (GET "/" [] (let [body (:body @(http/get (random-image (fetch-flickr-public-feed))))]
                 {:status 200
                  :headers {}
-                 :body body})))
+                 :body body}))
+
+  (GET "/color" [] {:status 200
+                    :headers {}
+                    :body (System/getenv "RIFF_COLOR")}))
 
 (def app
   (handler/site app-routes))
