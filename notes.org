@@ -1,0 +1,10 @@
+* useful notes and links
+  - docker build --rm
+  - images have tags
+  - containers have names
+  - docker works best with 0.8
+  - #docker on freenode
+  - docker cheatsheet https://gist.github.com/wsargent/7049221
+	- docker is picky about command line option positions
+  - run your own docker register - https://github.com/dotcloud/docker-registry
+
